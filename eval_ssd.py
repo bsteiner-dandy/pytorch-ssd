@@ -181,9 +181,9 @@ if __name__ == '__main__':
             probs.reshape(-1, 1),
             boxes + 1.0  # matlab's indexes start from 1
         ], dim=1)
-        print(row.shape)
-        # if row.shape[0] == 7:
-        #     results.append(row)
+        # print(row.shape)
+        if row.shape[1] == 7:
+            results.append(row)
     results = torch.cat(results)
     for class_index, class_name in enumerate(class_names):
         if class_index == 0: continue  # ignore background
