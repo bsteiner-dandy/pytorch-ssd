@@ -181,7 +181,7 @@ if __name__ == '__main__':
             probs.reshape(-1, 1),
             boxes + 1.0  # matlab's indexes start from 1
         ], dim=1)
-        print(row.shape[0])
+        print(row.shape)
         # if row.shape[0] == 7:
         #     results.append(row)
     results = torch.cat(results)
