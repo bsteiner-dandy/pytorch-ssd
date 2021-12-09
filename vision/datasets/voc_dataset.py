@@ -86,6 +86,7 @@ class VOCDataset:
 
     def get_image(self, index):
         image_id = self.ids[index]
+        print('Image id is: ' + image_id)
         image = self._read_image(image_id)
         if self.transform:
             image, _ = self.transform(image)
