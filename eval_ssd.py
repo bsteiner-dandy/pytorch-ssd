@@ -175,12 +175,14 @@ if __name__ == '__main__':
         boxes, labels, probs = predictor.predict(image)
         print("Prediction: {:4f} seconds.".format(timer.end("Predict")))
         indexes = torch.ones(labels.size(0), 1, dtype=torch.float32) * i
-        results.append(torch.cat([
+        row = torch.cat([
             indexes.reshape(-1, 1),
             labels.reshape(-1, 1).float(),
             probs.reshape(-1, 1),
             boxes + 1.0  # matlab's indexes start from 1
-        ], dim=1))
+        ], dim=1)
+        if row.shape[0] == 7:
+            results.append(row)
     results = torch.cat(results)
     for class_index, class_name in enumerate(class_names):
         if class_index == 0: continue  # ignore background
