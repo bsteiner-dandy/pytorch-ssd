@@ -109,7 +109,9 @@ def compute_average_precision_per_class(num_true_cases, gt_boxes, difficult_case
             else:
                 false_positive[i] = 1
 
+    print(true_positive)
     true_positive = true_positive.cumsum()
+    print(true_positive)
     false_positive = false_positive.cumsum()
     precision = true_positive / (true_positive + false_positive)
     recall = true_positive / num_true_cases
