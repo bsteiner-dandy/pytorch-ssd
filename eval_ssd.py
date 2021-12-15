@@ -113,6 +113,8 @@ def compute_average_precision_per_class(num_true_cases, gt_boxes, difficult_case
     false_positive = false_positive.cumsum()
     precision = true_positive / (true_positive + false_positive)
     recall = true_positive / num_true_cases
+    print(precision)
+    print(recall)
     if use_2007_metric:
         return measurements.compute_voc2007_average_precision(precision, recall)
     else:
